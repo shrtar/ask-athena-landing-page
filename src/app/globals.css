@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Young+Serif:wght@400&family=Inter:wght@400;500;700&family=Manrope:wght@400;500;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: #1A1A1A; /* Soft Obsidian */
+  --color-foreground: #F5F2E8; /* Parchment Cream */
+
+  --color-card: #314A60; /* Deep Mycenaean Blue for cards/sections */
+  --color-card-foreground: #F5F2E8;
+
+  --color-popover: #314A60;
+  --color-popover-foreground: #F5F2E8;
+
+  --color-primary: #A7562D; /* Sienna Clay */
+  --color-primary-foreground: #F5F2E8;
+
+  --color-secondary: #5B7553; /* Olive Green */
+  --color-secondary-foreground: #F5F2E8;
+
+  --color-muted: #314A60;  
+  --color-muted-foreground: #F5F2E8; /* Changed to requested color */
+
+  --color-accent: #FFDDA1; /* Warm Ochre */
+  --color-accent-foreground: #1A1A1A;
+
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fafafa;
+
+  --color-border: #314A60; /* Use blue for borders */
+  --color-input: #314A60;
+  --color-ring: #FFDDA1; /* Warm Ochre for focus rings */
+
+  --color-chart-1: #e67e22;
+  --color-chart-2: #2d8659;
+  --color-chart-3: #1e3a5f;
+  --color-chart-4: #f1c40f;
+  --color-chart-5: #e74c3c;
+
+  /* Custom Design System Colors */
+  --color-heading: #F5F2E8; /* Changed to requested color */
+  --color-subheading: #F5F2E8; /* Changed to requested color */
+  --color-body-text: #F5F2E8; /* Parchment Cream */
+
+  /* Typography Fonts */
+  --font-display: "Young Serif", serif;
+  --font-body: "Inter", sans-serif;
+  --font-nav-button: "Cormorant Garamond", serif;
+
+  --radius-lg: 0.5rem;
+  --radius-md: calc(0.5rem - 2px);
+  --radius-sm: calc(0.5rem - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+}
+
+@layer utilities {
+  body {
+    font-family: var(--font-body);
+  }
+}
+
+@layer base {
+  :root {
+    --background: var(--color-background);
+    --foreground: var(--color-foreground);
+    --card: var(--color-card);
+    --card-foreground: var(--color-card-foreground);
+    --popover: var(--color-popover);
+    --popover-foreground: var(--color-popover-foreground);
+    --primary: var(--color-primary);
+    --primary-foreground: var(--color-primary-foreground);
+    --secondary: var(--color-secondary);
+    --secondary-foreground: var(--color-secondary-foreground);
+    --muted: var(--color-muted);
+    --muted-foreground: var(--color-muted-foreground);
+    --accent: var(--color-accent);
+    --accent-foreground: var(--color-accent-foreground);
+    --destructive: var(--color-destructive);
+    --destructive-foreground: var(--color-destructive-foreground);
+    --border: var(--color-border);
+    --input: var(--color-input);
+    --ring: var(--color-ring);
+    --chart-1: var(--color-chart-1);
+    --chart-2: var(--color-chart-2);
+    --chart-3: var(--color-chart-3);
+    --chart-4: var(--color-chart-4);
+    --chart-5: var(--color-chart-5);
+    --radius: 0.5rem; /* Using radius-lg as default */
+
+    /* Custom classes for direct use */
+    --heading-color: var(--color-heading);
+    --subheading-color: var(--color-subheading);
+    --body-text-color: var(--color-body-text);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: var(--font-display);
+    color: var(--heading-color);
+    font-weight: 400; /* Changed to regular weight */
+  }
+
+  h1 {
+    font-size: 4rem; /* 64px */
+    font-weight: 400; /* Changed to regular weight */
+  }
+
+  h2 {
+    font-size: 2.25rem; /* 36px */
+    font-weight: 400; /* Changed to regular weight */
+  }
+
+  h3 {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 400; /* Changed to regular weight */
+  }
+
+  p {
+    font-family: var(--font-body);
+    font-size: 1.125rem; /* 18px */
+    color: var(--body-text-color);
+    line-height: 1.7;
+  }
+
+  .subheadline {
+    font-family: var(--font-body);
+    font-size: 1.25rem; /* 20px */
+    color: var(--body-text-color);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem; /* 40px */
+    color: var(--color-heading);
+    margin-bottom: 2rem;
+  }
+
+  .text-caption {
+    font-family: var(--font-body);
+    font-size: 0.875rem; /* 14px */
+  }
+
+  .text-ochre {
+    color: var(--color-accent);
+  }
+
+  .bg-deep-blue {
+    background-color: #314A60;
+  }
+  
+  .bg-soft-obsidian {
+    background-color: #1A1A1A;
+  }
+
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+    transition: background-color 300ms ease;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-secondary);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  /* Navigation and Button Typography */
+  nav a, .navigation-link {
+    font-family: var(--font-nav-button);
+    font-weight: 500;
+  }
+
+  button, .btn, [data-slot="button"] {
+    font-family: var(--font-nav-button);
+    font-weight: 500;
+  }
+
+  /* Specific button component styling */
+  .btn-primary, .btn-secondary, .btn-outline, .btn-ghost {
+    font-family: var(--font-nav-button);
+    font-weight: 500;
+  }
+}
